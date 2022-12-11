@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  dev:
+    build: 
+      context: .
+    container_name: golang
+    image: guialelop/golang
+    entrypoint: go build hello.go
+    volumes:
+      - ./:/usr/src/app
+    tty: true
+  prod:
+    build: 
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: hello-fullcycle
+    image: guialelop/fullcycle
